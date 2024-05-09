@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  lofi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5004:8000"
+    restart: always
+    container_name: "lofi-container"
+    environment:
+      - ALLOWED_HOSTS= localhost 127.0.0.1
+      - DEBUG= False

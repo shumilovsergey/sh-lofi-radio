@@ -1,0 +1,79 @@
+{% load static tailwind_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>PAGE NAME</title>
+  <style>
+  </style>
+{% tailwind_css %}
+</head>
+
+<body style="background-color: rgb(253 209 209)">
+  <div class="flex justify-center items-center">
+    <div>
+      <img class="" src="{% static 'lofi.gif' %}" >
+    </div>
+    
+    <div class="w-32 h-32">
+      <img class="w-28 " id="start_button" onclick="startVideo()" src="{% static 'play.svg' %}" >
+      <img class="w-28  hidden" id="stop_button" onclick="stopVideo()" src="{% static 'stop.svg' %}">
+    </div>
+
+    <div id="player"></div>
+
+  </div>
+
+
+
+  <script>
+    var tag = document.createElement('script');
+
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    var player;
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('player', {
+        height: '0',
+        width: '0',
+        videoId: 'jfKfPfyJRdk',
+        playerVars: {
+            'autoplay': 1 // Autoplay the video
+          },
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+        }
+      });
+    }
+
+
+
+    function onPlayerStateChange(event) {
+      
+    }
+
+    function startVideo() {
+      document.getElementById('start_button').classList.add('hidden');
+      document.getElementById('stop_button').classList.remove('hidden');
+      player.playVideo();
+    }
+
+    function stopVideo() {
+      document.getElementById('start_button').classList.remove('hidden');
+      document.getElementById('stop_button').classList.add('hidden');
+      player.stopVideo();
+    }
+
+    function onPlayerReady(event) {
+    }
+
+  </script>
+</body>
+</html>

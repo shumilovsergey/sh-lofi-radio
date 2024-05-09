@@ -1,2 +1,2 @@
-# sh-lofi-radio
-lofi-radio
+# template-django-tailwind
+here is my django tailwind template
